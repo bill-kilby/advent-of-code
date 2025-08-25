@@ -11,6 +11,8 @@ namespace Test.Advents._2015.Day3
     internal class QuestionTests : IQuestionTests<int>
     {
         [TestCase("2015/Day3/input.txt", 2565, 2639)]
+        [TestCase("2015/Day3/edge1.txt", 4, 3)]
+        [TestCase("2015/Day3/edge2.txt", 2, 11)]
         public void SolvingQuestion_ReturnsCorrectResult(string path, int silverAnswer, int goldAnswer)
         {
             // Assemble
