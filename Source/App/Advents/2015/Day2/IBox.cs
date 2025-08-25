@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day2
 {
-    internal interface IBox
+    public interface IBox
     {
         public int GetAreaOfSmallestSide();
 
         public int GetSurfaceArea();
+
+        public int GetVolume();
+
+        public int GetSmallestPerimeter();
     }
 }
