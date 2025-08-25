@@ -418,4 +418,4 @@ FodyWeavers.xsd
 *.msp
 
 # Inputs (see https://www.reddit.com/r/adventofcode/wiki/faqs/copyright/inputs/)
-*_input.txt
+*input.txt
