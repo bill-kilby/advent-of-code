@@ -15,7 +15,7 @@ namespace App.Advents._2015.Day2
         public Box(int width, int length, int height)
         {
             _widthLengthArea = width * length;
-            _widthHeightArea = length * height;
+            _widthHeightArea = width * height;
             _lengthHeightArea = length * height;
         }
 
