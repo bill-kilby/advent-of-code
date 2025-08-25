@@ -15,17 +15,16 @@ namespace App.Advents._2015.Day3
     /// </summary>
     public class Question : QuestionBase<int>
     {
-        private Dictionary<Vector2Int, int> _visited = new();
+        private HashSet<Vector2Int> _visited = new();
 
-        private Vector2Int _santaPos = new();
-        private Vector2Int _evilSantaPos = new();
+        private Vector2Int _santaPos;
+        private Vector2Int _evilSantaPos;
 
         internal override int SolveSilver(string path)
         {
             var input = InputHelper.GetText(path);
 
-            _santaPos = new();
-            _visited = new();
+            Setup();
 
             DeliverPresent(_santaPos);
             foreach (var move in input)
@@ -42,9 +41,7 @@ namespace App.Advents._2015.Day3
         {
             var input = InputHelper.GetText(path);
 
-            _santaPos = new();
-            _evilSantaPos = new();
-            _visited = new();
+            Setup();
              
             var evil = false;
 
@@ -69,31 +66,22 @@ namespace App.Advents._2015.Day3
             return _visited.Count;
         }
 
-        private void DeliverPresent(Vector2Int pos)
+        private void Setup()
         {
-            if (!_visited.ContainsKey(pos))
-            {
-                _visited.Add(pos, 0);
-            }
-
-            _visited[pos]++;
+            _santaPos = new();
+            _evilSantaPos = new();
+            _visited = new();
         }
 
-        private Vector2Int UpdatePosition(Vector2Int pos, char move)
+        private void DeliverPresent(Vector2Int pos) => _visited.Add(pos);
+
+        private Vector2Int UpdatePosition(Vector2Int pos, char move) => move switch
         {
-            switch (move)
-            {
-                case '^':
-                    return pos + Vector2Int.Up;
-                case 'v':
-                    return pos + Vector2Int.Down;
-                case '>':
-                    return pos + Vector2Int.Left;
-                case '<':
-                    return pos + Vector2Int.Right;
-                default:
-                    throw new InvalidCharacterException(move);
-            }
-        }
+            '^' => pos + Vector2Int.Up,
+            'v' => pos + Vector2Int.Down,
+            '>' => pos + Vector2Int.Left,
+            '<' => pos + Vector2Int.Right,
+            _ => throw new InvalidCharacterException(move),
+        };
     }
 }
