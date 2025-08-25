@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+    <Content Include="Inputs\**\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
