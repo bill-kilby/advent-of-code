@@ -15,9 +15,10 @@ namespace App.Advents._2015.Day3
     /// </summary>
     public class Question : QuestionBase<int>
     {
-        private Dictionary<Vector2Int, int> _visited;
+        private Dictionary<Vector2Int, int> _visited = new();
 
-        private Vector2Int _santaPos;
+        private Vector2Int _santaPos = new();
+        private Vector2Int _evilSantaPos = new();
 
         internal override int SolveSilver(string path)
         {
@@ -25,11 +26,13 @@ namespace App.Advents._2015.Day3
 
             _santaPos = new();
             _visited = new();
+
+            DeliverPresent(_santaPos);
             foreach (var move in input)
             {
-                HandleMove(move);
+                _santaPos = UpdatePosition(_santaPos, move);
 
-                DeliverPresent();
+                DeliverPresent(_santaPos);
             }
 
             return _visited.Count;
@@ -37,35 +40,57 @@ namespace App.Advents._2015.Day3
 
         internal override int SolveGold(string path)
         {
-            throw new NotImplementedException();
-        }
+            var input = InputHelper.GetText(path);
 
-        private void DeliverPresent()
-        {
-            if (!_visited.ContainsKey(_santaPos))
+            _santaPos = new();
+            _evilSantaPos = new();
+            _visited = new();
+             
+            var evil = false;
+
+            DeliverPresent(_santaPos);
+            DeliverPresent(_evilSantaPos);
+            foreach (var move in input)
             {
-                _visited.Add(_santaPos, 0);
+                if (evil)
+                {
+                    _evilSantaPos = UpdatePosition(_evilSantaPos, move);
+                    DeliverPresent(_evilSantaPos);
+                    evil = false;
+                } 
+                else
+                {
+                    _santaPos = UpdatePosition(_santaPos, move);
+                    DeliverPresent(_santaPos);
+                    evil = true;
+                }
             }
 
-            _visited[_santaPos]++;
+            return _visited.Count;
         }
 
-        private void HandleMove(char move)
+        private void DeliverPresent(Vector2Int pos)
+        {
+            if (!_visited.ContainsKey(pos))
+            {
+                _visited.Add(pos, 0);
+            }
+
+            _visited[pos]++;
+        }
+
+        private Vector2Int UpdatePosition(Vector2Int pos, char move)
         {
             switch (move)
             {
                 case '^':
-                    _santaPos.Y++;
-                    break;
+                    return pos + Vector2Int.Up;
                 case 'v':
-                    _santaPos.Y--;
-                    break;
-                case '<':
-                    _santaPos.X--;
-                    break;
+                    return pos + Vector2Int.Down;
                 case '>':
-                    _santaPos.X++;
-                    break;
+                    return pos + Vector2Int.Left;
+                case '<':
+                    return pos + Vector2Int.Right;
                 default:
                     throw new InvalidCharacterException(move);
             }
