@@ -17,29 +17,23 @@ namespace App.Advents._2015.Day4
         {
             var input = InputHelper.GetText(path);
 
-            var num = 1;
-            var preHash = $"{input}{num}";
-            var hash = GetHash(preHash);
-
-            while (!StartsWithExpectedZeroCount(hash, 5))
-            {
-                num++;
-                preHash = $"{input}{num}";
-                hash = GetHash(preHash);
-            }
-
-            return num;
+            return Solve(input, 5);
         }
 
         internal override int SolveGold(string path)
         {
             var input = InputHelper.GetText(path);
 
+            return Solve(input, 6);
+        }
+
+        private int Solve(string input, int expected)
+        {
             var num = 1;
             var preHash = $"{input}{num}";
             var hash = GetHash(preHash);
 
-            while (!StartsWithExpectedZeroCount(hash, 6))
+            while (!StartsWithExpectedZeroCount(hash, expected))
             {
                 num++;
                 preHash = $"{input}{num}";
