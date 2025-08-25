@@ -19,13 +19,16 @@
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
-    <Content Include="Inputs\**\*.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\App\App.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Inputs\**\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

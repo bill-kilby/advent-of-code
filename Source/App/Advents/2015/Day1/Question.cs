@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace App.Advents._2015.Day1
 {
     /// <summary>
-    /// Question spec: https://adventofcode.com/2015/day/1
+    /// https://adventofcode.com/2015/day/1
     /// </summary>
     public class Question : QuestionBase<int>
     {

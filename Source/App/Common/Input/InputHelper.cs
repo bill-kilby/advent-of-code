@@ -9,7 +9,7 @@ namespace App.Common.Input
 {
     internal static class InputHelper
     {
-        private static string InputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inputs");
+        private static readonly string InputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Inputs");
 
         /// <summary>
         /// Returns the input as a single string.
