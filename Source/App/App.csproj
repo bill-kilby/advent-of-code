@@ -9,8 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Advents\2015\" />
-    <Folder Include="Common\Loading\" />
-    <Folder Include="Common\Questions\" />
   </ItemGroup>
 
 </Project>
