@@ -31,7 +31,18 @@ namespace App.Advents._2015.Day2
 
         internal override int SolveGold(string path)
         {
-            return 0;
+            var input = InputHelper.GetLines(path);
+
+            var boxes = GetBoxes(input);
+
+            var length = 0;
+            foreach (var box in boxes)
+            {
+                length += box.GetSmallestPerimeter();
+                length += box.GetVolume();
+            }
+
+            return length;
         }
 
         private List<Box> GetBoxes(string[] input)
