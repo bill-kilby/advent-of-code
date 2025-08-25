@@ -33,7 +33,20 @@ namespace App.Advents._2015.Day4
 
         internal override int SolveGold(string path)
         {
-            return 0;
+            var input = InputHelper.GetText(path);
+
+            var num = 1;
+            var preHash = $"{input}{num}";
+            var hash = GetHash(preHash);
+
+            while (!StartsWithExpectedZeroCount(hash, 6))
+            {
+                num++;
+                preHash = $"{input}{num}";
+                hash = GetHash(preHash);
+            }
+
+            return num;
         }
 
         private string GetHash(string input)
@@ -58,7 +71,7 @@ namespace App.Advents._2015.Day4
                 if (entry == '0') count++;
                 else break;
 
-                if (count == 5) return true;
+                if (count == expected) return true;
             }
 
             return false;
