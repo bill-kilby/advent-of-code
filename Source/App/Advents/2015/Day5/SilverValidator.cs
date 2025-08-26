@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day5
 {
-    public class NicenessValidator : IValidator<string>
+    public class SilverValidator : IValidator<string>
     {
         private string _input;
 

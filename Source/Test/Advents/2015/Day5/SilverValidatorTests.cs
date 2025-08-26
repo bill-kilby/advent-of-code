@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Test.Advents._2015.Day5
 {
-    internal class NicenessValidatorTests
+    internal class SilverValidatorTests
     {
-        private IValidator<string> _validator = new NicenessValidator();
+        private IValidator<string> _validator = new SilverValidator();
 
         [Test]
         public void Validate_WithValidString_ShouldBeTrue()

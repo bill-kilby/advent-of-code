@@ -14,7 +14,7 @@ namespace App.Advents._2015.Day5
     /// </summary>
     public class Question : QuestionBase<int>
     {
-        private IValidator<string> _validator = new NicenessValidator();
+        private IValidator<string> _silverValidator = new SilverValidator();
 
         internal override int SolveSilver(string path)
         {
@@ -23,7 +23,7 @@ namespace App.Advents._2015.Day5
             var count = 0;
             foreach (var line in input)
             {
-                if (_validator.Validate(line)) count++;
+                if (_silverValidator.Validate(line)) count++;
             }
 
             return count;
