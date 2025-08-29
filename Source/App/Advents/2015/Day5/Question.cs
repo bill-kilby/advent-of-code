@@ -15,6 +15,7 @@ namespace App.Advents._2015.Day5
     public class Question : QuestionBase<int>
     {
         private IValidator<string> _silverValidator = new SilverValidator();
+        private IValidator<string> _goldValidator = new GoldValidator();
 
         internal override int SolveSilver(string path)
         {
@@ -31,7 +32,15 @@ namespace App.Advents._2015.Day5
 
         internal override int SolveGold(string path)
         {
-            throw new NotImplementedException();
+            var input = InputHelper.GetLines(path);
+
+            var count = 0;
+            foreach (var line in input)
+            {
+                if (_goldValidator.Validate(line)) count++;
+            }
+
+            return count;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Test.Advents._2015.Day5
 {
-    internal class GoldenValidatorTests
+    internal class GoldValidatorTests
     {
         private IValidator<string> _validator = new GoldValidator();
 
@@ -51,7 +51,7 @@ namespace Test.Advents._2015.Day5
             Assert.That(result, Is.EqualTo(false));
         }
 
-        [TestCase("ugknbfddgicrmopn", true)]
+        [TestCase("qjhvhtzxzqqjkmpb", true)]
         [TestCase("xxyxx", true)]
         [TestCase("uurcxstgmygtbstg", false)]
         [TestCase("ieodomkazucvgmuy", false)]
