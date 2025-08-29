@@ -10,7 +10,7 @@ namespace App.Advents._2015.Day6
     /// <summary>
     /// https://adventofcode.com/2015/day/6
     /// </summary>
-    internal class Question : QuestionBase<int>
+    public class Question : QuestionBase<int>
     {
         internal override int SolveGold(string path)
         {
