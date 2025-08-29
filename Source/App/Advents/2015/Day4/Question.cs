@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day4
 {
+    /// <summary>
+    /// https://adventofcode.com/2015/day/4
+    /// </summary>
     public class Question : QuestionBase<int>
     {
         private MD5 hasher = MD5.Create();
