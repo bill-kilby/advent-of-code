@@ -56,5 +56,30 @@ namespace Test.Advents._2015.Day6
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(3));
         }
+
+        [Test]
+        public void TurnOn_TurnsOnLight()
+        {
+            // Assemble
+
+            // Act
+            _map.TurnOn(new Vector2Int(0, 0));
+
+            // Assert
+            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void TurnOff_TurnsOffLight()
+        {
+            // Assemble
+            _map.TurnOn(new Vector2Int(0, 0));
+
+            // Act
+            _map.TurnOff(new Vector2Int(0, 0));
+
+            // Assert
+            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(0));
+        }
     }
 }
