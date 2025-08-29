@@ -9,7 +9,7 @@ namespace App.Advents._2015.Day5
 {
     public class SilverValidator : IValidator<string>
     {
-        private string _input;
+        private string _input = string.Empty;
 
         private HashSet<char> _vowels = new()
         {
