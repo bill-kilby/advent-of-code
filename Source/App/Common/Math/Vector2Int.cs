@@ -33,5 +33,20 @@ namespace App.Common.Math
 
         public static bool operator ==(Vector2Int left, Vector2Int right) => left.Equals(right);
         public static bool operator !=(Vector2Int left, Vector2Int right) => !left.Equals(right);
+
+        public static Vector2Int Parse(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                throw new FormatException("Input cannot be null or empty.");
+
+            var parts = s.Split(',');
+            if (parts.Length != 2)
+                throw new FormatException($"Failed at parsing '{s}'. Must be in format 'X,Y'.");
+
+            if (!int.TryParse(parts[0], out var x) || !int.TryParse(parts[1], out var y))
+                throw new FormatException($"Failed at parsing '{s}'. Must be in format 'X,Y' with valid integers.");
+
+            return new Vector2Int(x, y);
+        }
     }
 }

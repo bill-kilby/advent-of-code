@@ -76,5 +76,35 @@ namespace Test.Common.Math
             Assert.That(b / 3, Is.EqualTo(new Vector2Int(1, 1)));
             Assert.That(-a, Is.EqualTo(new Vector2Int(-1, -2)));
         }
+
+        [Test]
+        public void Parse_GivenString_ReturnsExpected()
+        {
+            // Assemble
+            var input = "2,3";
+            var expected = new Vector2Int(2, 3);
+
+            // Act
+            var result = Vector2Int.Parse(input);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(",0")]
+        [TestCase("0,")]
+        [TestCase(" ")]
+        [TestCase("a,b")]
+        [TestCase("0.1f,0.1f")]
+        public void Parse_GivenInvalidString_ThrowsExpectedError(string input)
+        {
+            // Assemble
+
+            // Act + Assert
+            Assert.Throws<FormatException>(() =>
+            {
+                Vector2Int.Parse(input);
+            });
+        }
     }
 }
