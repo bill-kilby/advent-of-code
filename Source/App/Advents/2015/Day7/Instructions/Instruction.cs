@@ -11,5 +11,6 @@ namespace App.Advents._2015.Day7.Instructions
         public InstructionType InstructionType { get; } = instructionType;
         public string Output { get; } = output;
         public string[] Inputs { get; } = inputs;
+        public bool Complete { get; set; } = false;
     }
 }
