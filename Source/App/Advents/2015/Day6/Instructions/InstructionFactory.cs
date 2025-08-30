@@ -33,9 +33,9 @@ namespace App.Advents._2015.Day6.Instructions
 
             var dx = from.X - to.X;
             var dy = from.Y - to.Y;
-            for (var x = from.X; x < to.X; x++)
+            for (var x = from.X; x <= to.X; x++)
             {
-                for (var y = from.Y; y < to.Y; y++)
+                for (var y = from.Y; y <= to.Y; y++)
                 {
                     lights.Add(new Vector2Int(x, y));
                 }

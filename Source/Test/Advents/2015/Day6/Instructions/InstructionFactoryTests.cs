@@ -31,7 +31,7 @@ namespace Test.Advents._2015.Day6.Instructions
         public void Create_SetsExpectedLights()
         {
             // Assemble
-            var input = "turn on 0,0 through 3,3";
+            var input = "turn on 0,0 through 2,2";
             var expected = new Vector2Int[]
             {
                 new(0,0), new(1, 0), new(2, 0),
