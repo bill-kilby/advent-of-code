@@ -14,7 +14,14 @@ namespace Test.Advents._2015.Day6
 
         public int GetTotalBrightness()
         {
-            throw new NotImplementedException();
+            var total = 0;
+
+            foreach (var light in _map)
+            {
+                total += light;
+            }
+
+            return total;
         }
 
         public int GetTotalLitLights()
@@ -31,22 +38,31 @@ namespace Test.Advents._2015.Day6
 
         public void HardToggle(Vector2Int pos)
         {
-            throw new NotImplementedException();
+            if (_map[pos.X, pos.Y] != 0)
+            {
+                _map[pos.X, pos.Y] = 0;
+            }
+            else
+            {
+                _map[pos.X, pos.Y] = 1;
+            }
         }
 
         public void IncreaseToggle(Vector2Int pos)
         {
-            throw new NotImplementedException();
+            _map[pos.X, pos.Y] += 2;
         }
 
         public void TurnOff(Vector2Int pos)
         {
-            _map[pos.X, pos.Y] = false;
+            _map[pos.X, pos.Y]--;
+
+            if (_map[pos.X, pos.Y] < 0) _map[pos.X, pos.Y] = 0;
         }
 
         public void TurnOn(Vector2Int pos)
         {
-            _map[pos.X, pos.Y] = true;
+            _map[pos.X, pos.Y]++;
         }
     }
 }
