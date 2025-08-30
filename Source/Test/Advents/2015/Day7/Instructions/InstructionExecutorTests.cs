@@ -33,7 +33,12 @@ namespace Test.Advents._2015.Day7.Instructions
         public void Execute_GivenInstruction_AndPossible_SetsInstructionToComplete(Instruction input, int _)
         {
             // Assemble
-            var valueMap = new Dictionary<string, ushort?>();
+            var valueMap = new Dictionary<string, ushort?>()
+            {
+                {
+                    "test_output", null
+                }
+            };
 
             // Act
             _executor.Execute(input, valueMap);
