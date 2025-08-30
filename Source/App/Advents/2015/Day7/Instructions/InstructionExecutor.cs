@@ -44,7 +44,9 @@ namespace App.Advents._2015.Day7.Instructions
             }
 
             instruction.Complete = true;
-            _map[instruction.Output] = result;
+
+            if (_map[instruction.Output] == null) 
+                _map[instruction.Output] = result;
         }
 
         private ushort Assign(ushort a) => (ushort) a;
