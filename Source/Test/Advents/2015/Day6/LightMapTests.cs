@@ -81,5 +81,20 @@ namespace Test.Advents._2015.Day6
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(0));
         }
+
+        [Test]
+        public void GetTotalBrightness_GetsTotalBrightness()
+        {
+            // Assemble
+
+            // Act
+            _map.TurnOn(new Vector2Int(0, 0));
+            _map.TurnOn(new Vector2Int(0, 0));
+            _map.TurnOn(new Vector2Int(0, 0));
+            _map.TurnOn(new Vector2Int(0, 0));
+
+            // Assert
+            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(4));
+        }
     }
 }

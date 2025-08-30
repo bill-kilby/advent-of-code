@@ -12,6 +12,11 @@ namespace Test.Advents._2015.Day6
     {
         private bool[,] _map = new bool[1000, 1000];
 
+        public int GetTotalBrightness()
+        {
+            throw new NotImplementedException();
+        }
+
         public int GetTotalLitLights()
         {
             var total = 0;

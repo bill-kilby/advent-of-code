@@ -11,6 +11,8 @@ namespace App.Advents._2015.Day6
     {
         public int GetTotalLitLights();
 
+        public int GetTotalBrightness();
+
         public void Toggle(Vector2Int pos);
 
         public void TurnOn(Vector2Int pos);
