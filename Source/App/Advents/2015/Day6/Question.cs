@@ -28,7 +28,7 @@ namespace App.Advents._2015.Day6
             foreach (var line in input)
             {
                 var instruction = _instructionFactory.Create(line);
-                DoInstruction(instruction);
+                DoSilverInstruction(instruction);
             }
 
             return _map.GetTotalLitLights();
@@ -36,10 +36,20 @@ namespace App.Advents._2015.Day6
 
         internal override int SolveGold(string path)
         {
-            throw new NotImplementedException();
+            _map = new LightMap();
+
+            var input = InputHelper.GetLines(path);
+
+            foreach (var line in input)
+            {
+                var instruction = _instructionFactory.Create(line);
+                DoGoldInstruction(instruction);
+            }
+
+            return _map.GetTotalBrightness();
         }
 
-        private void DoInstruction(Instruction instruction)
+        private void DoSilverInstruction(Instruction instruction)
         {
             foreach (var light in instruction.AffectedLights)
             {
@@ -53,6 +63,28 @@ namespace App.Advents._2015.Day6
                         break;
                     case InstructionType.Toggle:
                         _map.Toggle(light);
+                        break;
+                    default:
+                        throw new NotImplementedException(
+                            $"Unknown instruction type is unimplemented: {instruction.InstructionType}.");
+                }
+            }
+        }
+
+        private void DoGoldInstruction(Instruction instruction)
+        {
+            foreach (var light in instruction.AffectedLights)
+            {
+                switch (instruction.InstructionType)
+                {
+                    case InstructionType.TurnOn:
+                        _map.IncreaseBrightness(light, 1);
+                        break;
+                    case InstructionType.TurnOff:
+                        _map.DecreaseBrightness(light, 1);
+                        break;
+                    case InstructionType.Toggle:
+                        _map.IncreaseBrightness(light, 2);
                         break;
                     default:
                         throw new NotImplementedException(
