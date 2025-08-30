@@ -38,12 +38,14 @@ namespace Test.Advents._2015.Day6
 
         public void IncreaseBrightness(Vector2Int pos, int amount)
         {
-            throw new NotImplementedException();
+            _map[pos.X, pos.Y] += amount;
         }
 
         public void DecreaseBrightness(Vector2Int pos, int amount)
         {
-            throw new NotImplementedException();
+            _map[pos.X, pos.Y] -= amount;
+
+            if (_map[pos.X, pos.Y] < 0) _map[pos.X, pos.Y] = 0;
         }
 
         public void Toggle(Vector2Int pos)
