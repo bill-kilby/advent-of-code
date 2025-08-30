@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day7
 {
+    /// <summary>
+    /// https://adventofcode.com/2015/day/7
+    /// </summary>
     public class Question : QuestionBase<int>
     {
         private IFactory<Instruction, string> _instructionFactory = new InstructionFactory();
@@ -22,14 +25,8 @@ namespace App.Advents._2015.Day7
 
             var instructions = GetInstructions(input);
             var map = _mapFactory.Create(instructions);
-            var queue = CreateQueue(instructions);
 
-            while (true)
-            {
-                Tick(map, queue);
-
-                if (Solved(map)) break;
-            }
+            Solve(map, instructions);
 
             return (int) map["a"]!;
         }
@@ -40,10 +37,21 @@ namespace App.Advents._2015.Day7
 
             var instructions = GetInstructions(input);
             var map = _mapFactory.Create(instructions);
-            var queue = CreateQueue(instructions);
+            Solve(map, instructions);
 
-            var aValue = SolveSilver(path);
-            map["b"] = (ushort?) aValue;
+            var aValue = map["a"];
+            instructions = GetInstructions(input);
+            map = _mapFactory.Create(instructions);
+            map["b"] = aValue;
+
+            Solve(map, instructions);
+
+            return (int) map["a"]!;
+        }
+
+        private void Solve(Dictionary<string, ushort?> map, Instruction[] instructions)
+        {
+            var queue = CreateQueue(instructions);
 
             while (true)
             {
@@ -51,8 +59,6 @@ namespace App.Advents._2015.Day7
 
                 if (Solved(map)) break;
             }
-
-            return (int)map["a"]!;
         }
 
         private Queue<Instruction> CreateQueue(Instruction[] instructions)
