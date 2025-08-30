@@ -16,8 +16,8 @@ namespace App.Common.Question
             return new Answer<T>(silver, gold);
         }
 
-        internal abstract T SolveSilver(string path);
+        protected abstract T SolveSilver(string path);
 
-        internal abstract T SolveGold(string path);
+        protected abstract T SolveGold(string path);
     }
 }

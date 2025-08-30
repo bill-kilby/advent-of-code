@@ -13,7 +13,7 @@ namespace App.Advents._2015.Day2
     /// </summary>
     public class Question : QuestionBase<int>
     {
-        internal override int SolveSilver(string path)
+        protected override int SolveSilver(string path)
         {
             var input = InputHelper.GetLines(path);
 
@@ -29,7 +29,7 @@ namespace App.Advents._2015.Day2
             return length;
         }
 
-        internal override int SolveGold(string path)
+        protected override int SolveGold(string path)
         {
             var input = InputHelper.GetLines(path);
 

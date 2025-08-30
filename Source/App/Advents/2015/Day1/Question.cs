@@ -14,7 +14,7 @@ namespace App.Advents._2015.Day1
     /// </summary>
     public class Question : QuestionBase<int>
     {
-        internal override int SolveSilver(string path)
+        protected override int SolveSilver(string path)
         {
             var input = InputHelper.GetText(path);
 
@@ -27,7 +27,7 @@ namespace App.Advents._2015.Day1
             return floor;
         }
 
-        internal override int SolveGold(string path)
+        protected override int SolveGold(string path)
         {
             var input = InputHelper.GetText(path);
 

@@ -9,12 +9,12 @@ namespace App.Advents._2015.Day7
 {
     public class Question : QuestionBase<int>
     {
-        internal override int SolveSilver(string path)
+        protected override int SolveSilver(string path)
         {
             throw new NotImplementedException();
         }
 
-        internal override int SolveGold(string path)
+        protected override int SolveGold(string path)
         {
             throw new NotImplementedException();
         }
