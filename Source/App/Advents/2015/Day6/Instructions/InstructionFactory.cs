@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day6.Instructions
 {
-    public class InstructionFactory : IFactory<Instruction>
+    public class InstructionFactory : IFactory<Instruction, string>
     {
         private string _input = string.Empty;
 

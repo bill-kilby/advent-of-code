@@ -11,7 +11,7 @@ namespace Test.Advents._2015.Day6.Instructions
 {
     internal class InstructionFactoryTests
     {
-        IFactory<Instruction> _factory = new InstructionFactory();
+        IFactory<Instruction, string> _factory = new InstructionFactory();
 
         [TestCase("turn on 0,0 through 0,0", InstructionType.TurnOn)]
         [TestCase("turn off 0,0 through 0,0", InstructionType.TurnOff)]

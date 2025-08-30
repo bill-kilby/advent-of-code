@@ -17,9 +17,9 @@ namespace App.Advents._2015.Day6
     public class Question : QuestionBase<int>
     {
         private ILightMap _map = new LightMap();
-        private IFactory<Instruction> _instructionFactory = new InstructionFactory();
+        private IFactory<Instruction, string> _instructionFactory = new InstructionFactory();
 
-        internal override int SolveSilver(string path)
+        protected override int SolveSilver(string path)
         {
             _map = new LightMap();
 
@@ -34,7 +34,7 @@ namespace App.Advents._2015.Day6
             return _map.GetTotalLitLights();
         }
 
-        internal override int SolveGold(string path)
+        protected override int SolveGold(string path)
         {
             _map = new LightMap();
 

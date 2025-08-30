@@ -16,14 +16,14 @@ namespace App.Advents._2015.Day4
     {
         private MD5 hasher = MD5.Create();
 
-        internal override int SolveSilver(string path)
+        protected override int SolveSilver(string path)
         {
             var input = InputHelper.GetText(path);
 
             return Solve(input, 5);
         }
 
-        internal override int SolveGold(string path)
+        protected override int SolveGold(string path)
         {
             var input = InputHelper.GetText(path);
 

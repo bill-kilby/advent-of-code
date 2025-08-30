@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace App.Common.Abstractions
 {
-    public interface IFactory<T>
+    public interface IFactory<TOutput, TInput>
     {
-        public T Create(string input);
+        public TOutput Create(TInput input);
     }
 }
