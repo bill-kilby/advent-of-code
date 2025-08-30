@@ -1,4 +1,7 @@
-﻿using App.Common.Question;
+﻿using App.Advents._2015.Day7.Instructions;
+using App.Common.Abstractions;
+using App.Common.Input;
+using App.Common.Question;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +12,72 @@ namespace App.Advents._2015.Day7
 {
     public class Question : QuestionBase<int>
     {
+        private IFactory<Instruction, string> _instructionFactory = new InstructionFactory();
+        private IFactory<Dictionary<string, ushort?>, Instruction[]> _mapFactory = new ValueMapFactory();
+        private IInstructionExecutor _executor = new InstructionExecutor();
+
         protected override int SolveSilver(string path)
         {
-            throw new NotImplementedException();
+            var input = InputHelper.GetLines(path);
+
+            var instructions = GetInstructions(input);
+
+            var map = _mapFactory.Create(instructions);
+            var queue = CreateQueue(instructions);
+
+            while (true)
+            {
+                Tick(map, queue);
+
+                if (Solved(map)) break;
+            }
+
+            return (int) map["a"]!;
         }
 
         protected override int SolveGold(string path)
         {
-            throw new NotImplementedException();
+            return 0;
+        }
+
+        private Queue<Instruction> CreateQueue(Instruction[] instructions)
+        {
+            var queue = new Queue<Instruction>();
+
+            foreach (var instruction in instructions)
+            {
+                queue.Enqueue(instruction);
+            }
+
+            return queue;
+        }
+
+        private void Tick(Dictionary<string, ushort?> map, Queue<Instruction> queue)
+        {
+            var instruction = queue.Dequeue();
+
+            _executor.Execute(instruction, map);
+
+            if (!instruction.Complete) queue.Enqueue(instruction);
+        }
+
+        private bool Solved(Dictionary<string, ushort?> map)
+        {
+            if (map["a"] != null) return true;
+            return false;
+        }
+
+        private Instruction[] GetInstructions(string[] input)
+        {
+            var instructions = new List<Instruction>();
+
+            foreach (var line in input)
+            {
+                instructions.Add(
+                    _instructionFactory.Create(line));
+            }
+
+            return instructions.ToArray();
         }
     }
 }
