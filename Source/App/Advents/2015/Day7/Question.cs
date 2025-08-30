@@ -21,7 +21,6 @@ namespace App.Advents._2015.Day7
             var input = InputHelper.GetLines(path);
 
             var instructions = GetInstructions(input);
-
             var map = _mapFactory.Create(instructions);
             var queue = CreateQueue(instructions);
 
@@ -37,7 +36,23 @@ namespace App.Advents._2015.Day7
 
         protected override int SolveGold(string path)
         {
-            return 0;
+            var input = InputHelper.GetLines(path);
+
+            var instructions = GetInstructions(input);
+            var map = _mapFactory.Create(instructions);
+            var queue = CreateQueue(instructions);
+
+            var aValue = SolveSilver(path);
+            map["b"] = (ushort?) aValue;
+
+            while (true)
+            {
+                Tick(map, queue);
+
+                if (Solved(map)) break;
+            }
+
+            return (int)map["a"]!;
         }
 
         private Queue<Instruction> CreateQueue(Instruction[] instructions)
