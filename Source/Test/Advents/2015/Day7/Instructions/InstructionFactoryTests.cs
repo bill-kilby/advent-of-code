@@ -48,7 +48,7 @@ namespace Test.Advents._2015.Day7.Instructions
         {
             // Assemble
             var input = "123 -> x";
-            var expected = "123";
+            var expected = "x";
 
             // Act
             var result = _factory.Create(input);
