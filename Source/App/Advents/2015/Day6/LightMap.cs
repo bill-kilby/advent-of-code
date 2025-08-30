@@ -10,7 +10,7 @@ namespace Test.Advents._2015.Day6
 {
     public class LightMap : ILightMap
     {
-        private bool[,] _map = new bool[1000, 1000];
+        private int[,] _map = new int[1000, 1000];
 
         public int GetTotalBrightness()
         {
@@ -23,15 +23,20 @@ namespace Test.Advents._2015.Day6
 
             foreach (var light in _map)
             {
-                if (light) total++;
+                if (light > 0) total++;
             }
 
             return total;
         }
 
-        public void Toggle(Vector2Int pos)
+        public void HardToggle(Vector2Int pos)
         {
-            _map[pos.X, pos.Y] = !_map[pos.X, pos.Y];
+            throw new NotImplementedException();
+        }
+
+        public void IncreaseToggle(Vector2Int pos)
+        {
+            throw new NotImplementedException();
         }
 
         public void TurnOff(Vector2Int pos)

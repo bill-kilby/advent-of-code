@@ -19,25 +19,25 @@ namespace Test.Advents._2015.Day6
         }
 
         [Test]
-        public void Toggle_WhenLightOff_TurnsOnLight()
+        public void HardToggle_WhenLightOff_TurnsOnLight()
         {
             // Assemble
 
             // Act
-            _map.Toggle(new Vector2Int(0, 0));
+            _map.HardToggle(new Vector2Int(0, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(1));
         }
 
         [Test]
-        public void Toggle_WhenLightOn_TurnsOffLight()
+        public void HardToggle_WhenLightOn_TurnsOffLight()
         {
             // Assemble
-            _map.Toggle(new Vector2Int(0, 0));
+            _map.HardToggle(new Vector2Int(0, 0));
 
             // Act
-            _map.Toggle(new Vector2Int(0, 0));
+            _map.HardToggle(new Vector2Int(0, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(0));
@@ -49,9 +49,9 @@ namespace Test.Advents._2015.Day6
             // Assemble
 
             // Act
-            _map.Toggle(new Vector2Int(0, 0));
-            _map.Toggle(new Vector2Int(1, 0));
-            _map.Toggle(new Vector2Int(2, 0));
+            _map.HardToggle(new Vector2Int(0, 0));
+            _map.HardToggle(new Vector2Int(1, 0));
+            _map.HardToggle(new Vector2Int(2, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(3));
@@ -95,6 +95,18 @@ namespace Test.Advents._2015.Day6
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(4));
+        }
+
+        [Test]
+        public void IncreaseToggle_IncreasesBrightnessByTwo()
+        {
+            // Assemble
+
+            // Act
+            _map.IncreaseToggle(new Vector2Int(0, 0));
+
+            // Assert
+            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(2));
         }
     }
 }
