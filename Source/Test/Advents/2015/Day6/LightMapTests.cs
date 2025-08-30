@@ -94,7 +94,7 @@ namespace Test.Advents._2015.Day6
             _map.TurnOn(new Vector2Int(0, 0));
 
             // Assert
-            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(4));
+            Assert.That(_map.GetTotalBrightness(), Is.EqualTo(4));
         }
 
         [Test]
@@ -106,7 +106,7 @@ namespace Test.Advents._2015.Day6
             _map.IncreaseToggle(new Vector2Int(0, 0));
 
             // Assert
-            Assert.That(_map.GetTotalLitLights(), Is.EqualTo(2));
+            Assert.That(_map.GetTotalBrightness(), Is.EqualTo(2));
         }
     }
 }
