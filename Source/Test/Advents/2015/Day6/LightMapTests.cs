@@ -24,7 +24,7 @@ namespace Test.Advents._2015.Day6
             // Assemble
 
             // Act
-            _map.HardToggle(new Vector2Int(0, 0));
+            _map.Toggle(new Vector2Int(0, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(1));
@@ -34,10 +34,10 @@ namespace Test.Advents._2015.Day6
         public void HardToggle_WhenLightOn_TurnsOffLight()
         {
             // Assemble
-            _map.HardToggle(new Vector2Int(0, 0));
+            _map.Toggle(new Vector2Int(0, 0));
 
             // Act
-            _map.HardToggle(new Vector2Int(0, 0));
+            _map.Toggle(new Vector2Int(0, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(0));
@@ -49,9 +49,9 @@ namespace Test.Advents._2015.Day6
             // Assemble
 
             // Act
-            _map.HardToggle(new Vector2Int(0, 0));
-            _map.HardToggle(new Vector2Int(1, 0));
-            _map.HardToggle(new Vector2Int(2, 0));
+            _map.Toggle(new Vector2Int(0, 0));
+            _map.Toggle(new Vector2Int(1, 0));
+            _map.Toggle(new Vector2Int(2, 0));
 
             // Assert
             Assert.That(_map.GetTotalLitLights(), Is.EqualTo(3));
@@ -88,25 +88,37 @@ namespace Test.Advents._2015.Day6
             // Assemble
 
             // Act
-            _map.TurnOn(new Vector2Int(0, 0));
-            _map.TurnOn(new Vector2Int(0, 0));
-            _map.TurnOn(new Vector2Int(0, 0));
-            _map.TurnOn(new Vector2Int(0, 0));
+            _map.IncreaseBrightness(new Vector2Int(0, 0), 1);
+            _map.IncreaseBrightness(new Vector2Int(1, 0), 1);
+            _map.IncreaseBrightness(new Vector2Int(2, 0), 1);
+            _map.IncreaseBrightness(new Vector2Int(3, 0), 1);
 
             // Assert
             Assert.That(_map.GetTotalBrightness(), Is.EqualTo(4));
         }
 
         [Test]
-        public void IncreaseToggle_IncreasesBrightnessByTwo()
+        public void Increases_IncreasesBrightness()
         {
             // Assemble
 
             // Act
-            _map.IncreaseToggle(new Vector2Int(0, 0));
+            _map.IncreaseBrightness(new Vector2Int(0, 0), 2);
 
             // Assert
             Assert.That(_map.GetTotalBrightness(), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Decreases_DecreasesBrightness()
+        {
+            // Assemble
+
+            // Act
+            _map.DecreaseBrightness(new Vector2Int(0, 0), 2);
+
+            // Assert
+            Assert.That(_map.GetTotalBrightness(), Is.EqualTo(0));
         }
     }
 }

@@ -13,8 +13,11 @@ namespace App.Advents._2015.Day6
 
         public int GetTotalBrightness();
 
-        public void HardToggle(Vector2Int pos);
-        public void IncreaseToggle(Vector2Int pos);
+        public void Toggle(Vector2Int pos);
+
+        public void IncreaseBrightness(Vector2Int pos, int amount);
+
+        public void DecreaseBrightness(Vector2Int pos, int amount);
 
         public void TurnOn(Vector2Int pos);
 
