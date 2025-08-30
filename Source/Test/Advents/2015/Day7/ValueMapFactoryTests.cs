@@ -19,7 +19,7 @@ namespace Test.Advents._2015.Day7
             // Assemble
             var inputs = new Instruction[]
             {
-                new(InstructionType.ASSIGN, string.Empty, ["a, b"])
+                new(InstructionType.ASSIGN, string.Empty, ["a", "b"])
             };
 
             // Act
