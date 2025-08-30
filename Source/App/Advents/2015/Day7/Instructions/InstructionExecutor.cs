@@ -78,7 +78,7 @@ namespace App.Advents._2015.Day7.Instructions
 
             return _map.TryGetValue(value, out var mappedValue)
                 ? mappedValue
-                : (int?)null;
+                : null;
         }
     }
 }
