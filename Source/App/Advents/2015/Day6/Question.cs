@@ -17,7 +17,7 @@ namespace App.Advents._2015.Day6
     public class Question : QuestionBase<int>
     {
         private ILightMap _map = new LightMap();
-        private IFactory<Instruction> _instructionFactory = new InstructionFactory();
+        private IFactory<Instruction, string> _instructionFactory = new InstructionFactory();
 
         protected override int SolveSilver(string path)
         {

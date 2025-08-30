@@ -10,7 +10,7 @@ namespace Test.Advents._2015.Day7.Instructions
 {
     internal class InstructionFactoryTests
     {
-        private IFactory<Instruction> _factory = new InstructionFactory();
+        private IFactory<Instruction, string> _factory = new InstructionFactory();
 
         [TestCase("123 -> x", InstructionType.ASSIGN)]
         [TestCase("x AND y -> d", InstructionType.AND)]
