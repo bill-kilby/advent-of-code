@@ -71,21 +71,14 @@ namespace App.Advents._2015.Day7.Instructions
 
         private int? GetValue(string value)
         {
-            try
+            if (int.TryParse(value, out var number))
             {
-                return int.Parse(value);
+                return number;
             }
-            catch
-            {
-                if (_map.ContainsKey(value))
-                {
-                    return _map[value];
-                }
-                else
-                {
-                    return null;
-                }
-            }
+
+            return _map.TryGetValue(value, out var mappedValue)
+                ? mappedValue
+                : (int?)null;
         }
     }
 }
