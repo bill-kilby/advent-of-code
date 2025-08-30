@@ -97,7 +97,29 @@ namespace Test.Advents._2015.Day7.Instructions
             // Assert
             Assert.That(instruction.Complete, Is.EqualTo(true));
             Assert.That(valueMap["test_output"], Is.EqualTo(5));
+        }
 
+        [Test]
+        public void Execute_GivenOutputInValueMap_DoesNotOverwriteValue_AndExecutesAsExpected()
+        {
+            // Assemble
+            var valueMap = new Dictionary<string, ushort?>()
+            {
+                {
+                    "test_output", 404
+                }
+            };
+            var instruction = new Instruction(
+                InstructionType.ASSIGN,
+                "test_output",
+                new[] { "5" });
+
+            // Act
+            _executor.Execute(instruction, valueMap);
+
+            // Assert
+            Assert.That(instruction.Complete, Is.EqualTo(true));
+            Assert.That(valueMap["test_output"], Is.EqualTo(404));
         }
 
         private static IEnumerable<TestCaseData> ImpossibleInstructions
