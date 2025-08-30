@@ -15,10 +15,10 @@ namespace Test.Advents._2015.Day7.Instructions
         public void Execute_GivenInstruction_AndPossible_UpdatesValueMap(Instruction input, int expected)
         {
             // Assemble
-            var valueMap = new Dictionary<string, int>()
+            var valueMap = new Dictionary<string, ushort?>()
             {
                 {
-                    "test_output", int.MinValue
+                    "test_output", null
                 }
             };
 
@@ -33,7 +33,7 @@ namespace Test.Advents._2015.Day7.Instructions
         public void Execute_GivenInstruction_AndPossible_SetsInstructionToComplete(Instruction input, int _)
         {
             // Assemble
-            var valueMap = new Dictionary<string, int>();
+            var valueMap = new Dictionary<string, ushort?>();
 
             // Act
             _executor.Execute(input, valueMap);
@@ -46,10 +46,10 @@ namespace Test.Advents._2015.Day7.Instructions
         public void Execute_GivenInstruction_AndNotPossible_DoesNotUpdateValueMap(Instruction input, int _)
         {
             // Assemble
-            var valueMap = new Dictionary<string, int>()
+            var valueMap = new Dictionary<string, ushort?>()
             {
                 {
-                    "test_output", int.MinValue
+                    "test_output", null
                 }
             };
 
@@ -57,14 +57,14 @@ namespace Test.Advents._2015.Day7.Instructions
             _executor.Execute(input, valueMap);
 
             // Assert
-            Assert.That(valueMap["test_output"], Is.EqualTo(int.MinValue));
+            Assert.That(valueMap["test_output"], Is.EqualTo(null));
         }
 
         [TestCaseSource(nameof(ImpossibleInstructions))]
         public void Execute_GivenInstruction_AndNotPossible_DoesNotSetInstructionToComplete(Instruction input, int _)
         {
             // Assemble
-            var valueMap = new Dictionary<string, int>();
+            var valueMap = new Dictionary<string, ushort?>();
 
             // Act
             _executor.Execute(input, valueMap);
@@ -77,13 +77,13 @@ namespace Test.Advents._2015.Day7.Instructions
         public void Execute_GivenEntryInValueMap_UsesValue_AndExecutesAsExpected()
         {
             // Assemble
-            var valueMap = new Dictionary<string, int>()
+            var valueMap = new Dictionary<string, ushort?>()
             {
                 {
                     "test_input", 5
                 },
                 {
-                    "test_output", int.MinValue
+                    "test_output", null
                 }
             };
             var instruction = new Instruction(
@@ -134,7 +134,7 @@ namespace Test.Advents._2015.Day7.Instructions
                 yield return new TestCaseData(
                     new Instruction(InstructionType.RSHIFT, "test_output", new[] { "5", "6" }), 0);
                 yield return new TestCaseData(
-                    new Instruction(InstructionType.NOT, "test_output", new[] { "5" }), -6);
+                    new Instruction(InstructionType.NOT, "test_output", new[] { "5" }), 65530);
             }
         }
     }

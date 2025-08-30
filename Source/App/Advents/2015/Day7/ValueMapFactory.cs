@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace App.Advents._2015.Day7
 {
-    public class ValueMapFactory : IFactory<Dictionary<string, int>, Instruction[]>
+    public class ValueMapFactory : IFactory<Dictionary<string, ushort?>, Instruction[]>
     {
-        private Dictionary<string, int> _map = new();
+        private Dictionary<string, ushort?> _map = new();
 
-        public Dictionary<string, int> Create(Instruction[] input)
+        public Dictionary<string, ushort?> Create(Instruction[] input)
         {
             _map = new();
 
@@ -29,11 +29,11 @@ namespace App.Advents._2015.Day7
             foreach (var input in instruction.Inputs)
             {
                 if (!_map.Keys.Contains(input))
-                    _map.Add(input, int.MinValue);
+                    _map.Add(input, null);
             }
 
             if (!_map.Keys.Contains(instruction.Output))
-                _map.Add(instruction.Output, int.MinValue);
+                _map.Add(instruction.Output, null);
         }
     }
 }

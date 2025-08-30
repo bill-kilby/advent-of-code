@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,16 +9,16 @@ namespace App.Advents._2015.Day7.Instructions
 {
     public class InstructionExecutor : IInstructionExecutor
     {
-        private Dictionary<string, int> _map = new();
+        private Dictionary<string, ushort?> _map = new();
 
-        public void Execute(Instruction instruction, Dictionary<string, int> valueMap)
+        public void Execute(Instruction instruction, Dictionary<string, ushort?> valueMap)
         {
             _map = valueMap;
 
             var inputs = GetInputs(instruction.Inputs);
             if (inputs == null) return;
 
-            int result;
+            ushort result;
             switch (instruction.InstructionType)
             {
                 case InstructionType.ASSIGN:
@@ -46,16 +47,16 @@ namespace App.Advents._2015.Day7.Instructions
             _map[instruction.Output] = result;
         }
 
-        private int Assign(int a) => a;
-        private int Not(int a) => ~a;
-        private int And(int a, int b) => a & b;
-        private int Or(int a, int b) => a | b;
-        private int LShift(int a, int b) => a << b;
-        private int RShift(int a, int b) => a >> b;
+        private ushort Assign(ushort a) => (ushort) a;
+        private ushort Not(ushort a) => (ushort) ~a;
+        private ushort And(ushort a, ushort b) => (ushort) (a & b);
+        private ushort Or(ushort a, ushort b) => (ushort) (a | b);
+        private ushort LShift(ushort a, ushort b) => (ushort) (a << b);
+        private ushort RShift(ushort a, ushort b) => (ushort) (a >> b);
 
-        private int[]? GetInputs(string[] inputs)
+        private ushort[]? GetInputs(string[] inputs)
         {
-            var intputs = new List<int>();
+            var intputs = new List<ushort>();
 
             foreach (var intput in inputs)
             {
@@ -63,22 +64,25 @@ namespace App.Advents._2015.Day7.Instructions
 
                 if (value == null) return null;
 
-                intputs.Add((int) value);
+                intputs.Add((ushort) value);
             }
 
             return intputs.ToArray();
         }
 
-        private int? GetValue(string value)
+        private ushort? GetValue(string value)
         {
-            if (int.TryParse(value, out var number))
+            if (ushort.TryParse(value, out var number))
             {
                 return number;
             }
 
-            return _map.TryGetValue(value, out var mappedValue)
-                ? mappedValue
-                : null;
+            if (_map.TryGetValue(value, out var mappedValue))
+            {
+                return mappedValue;
+            }
+
+            return null;
         }
     }
 }

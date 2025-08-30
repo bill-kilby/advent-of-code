@@ -8,6 +8,6 @@ namespace App.Advents._2015.Day7.Instructions
 {
     public interface IInstructionExecutor
     {
-        public void Execute(Instruction instruction, Dictionary<string, int> valueMap);
+        public void Execute(Instruction instruction, Dictionary<string, ushort?> valueMap);
     }
 }

@@ -11,7 +11,7 @@ namespace Test.Advents._2015.Day7
 {
     internal class ValueMapFactoryTests
     {
-        private IFactory<Dictionary<string, int>, Instruction[]> _factory = new ValueMapFactory();
+        private IFactory<Dictionary<string, ushort?>, Instruction[]> _factory = new ValueMapFactory();
 
         [Test]
         public void Create_MapsInputs()
