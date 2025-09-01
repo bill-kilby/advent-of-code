@@ -10,7 +10,7 @@ namespace Test.Advents._2015.Day8
 {
     internal class QuestionTests : IQuestionTests<int>
     {
-        [TestCase("2015/Day8/input.txt", 956, 40149)]
+        [TestCase("2015/Day8/input.txt", 1333, 2046)]
         public void SolvingQuestion_ReturnsCorrectResult(string path, int silverAnswer, int goldAnswer)
         {
             // Assemble
