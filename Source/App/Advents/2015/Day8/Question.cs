@@ -27,7 +27,39 @@ namespace App.Advents._2015.Day8
 
         protected override int SolveGold(string path)
         {
-            throw new NotImplementedException();
+            var input = InputHelper.GetLines(path);
+
+            var total = 0;
+            foreach (var line in input)
+            {
+                total +=
+                    GetEncodedLength(line) - GetCodedLength(line);
+            }
+
+            return total;
+        }
+
+        private int GetEncodedLength(string input)
+        {
+            var sb = new StringBuilder();
+
+            foreach(var chr in input)
+            {
+                switch (chr)
+                {
+                    case '"':
+                        sb.Append("\\\"");
+                        break;
+                    case '\\':
+                        sb.Append("\\\\");
+                        break;
+                    default:
+                        sb.Append(chr); 
+                        break;
+                }
+            }
+
+            return sb.Length + 2;
         }
 
         private int GetCodedLength(string input) => input.Trim().Length;
