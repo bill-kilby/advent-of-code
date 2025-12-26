@@ -86,5 +86,25 @@ namespace Test.Advents._2015.Day9
             Assert.Contains("BKTown", cities);
             Assert.Contains("BKVillage", cities);
         }
+
+        [Test]
+        public void GetPossibleCities_GivenDuplicateCities_ReturnsAllPossibleCities()
+        {
+            // Assemble
+            map.AddTargetToCity("BKCity", "BKTown", 10);
+            map.AddTargetToCity("BKCity", "BKVillage", 10);
+            map.AddTargetToCity("BKTown", "BKCity", 10);
+
+            // Act
+            var cities = map.GetPossibleCities();
+
+            // Assert
+            Assert.That(cities, Is.Not.Null);
+            Assert.That(cities.Count, Is.EqualTo(3));
+
+            Assert.Contains("BKCity", cities);
+            Assert.Contains("BKTown", cities);
+            Assert.Contains("BKVillage", cities);
+        }
     }
 }
