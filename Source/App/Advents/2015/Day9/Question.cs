@@ -9,14 +9,23 @@ namespace App.Advents._2015.Day9
 {
     public class Question : QuestionBase<int>
     {
-        protected override int SolveGold(string path)
-        {
-            throw new NotImplementedException();
-        }
+        /*
+         * Map source destinations to destinations
+         * Get all cities
+         * Permutate cities for all possible routes (k-permutation, we want ABCD as well as AD).
+         * Calculate cost for all of these
+         * Chuck into a priority queue
+         * Get first for silver.
+         */
 
         protected override int SolveSilver(string path)
         {
-            throw new NotImplementedException();
+            return 0;
+        }
+
+        protected override int SolveGold(string path)
+        {
+            return 0;
         }
     }
 }
