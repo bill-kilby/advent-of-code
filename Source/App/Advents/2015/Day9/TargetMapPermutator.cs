@@ -24,6 +24,7 @@ namespace App.Advents._2015.Day9
 
         public List<string[]> Permute(string[] cities)
         {
+            // TODO: Permutate the cities so we get all possible routes (ABCD as well as just AD).
             throw new NotImplementedException();
         }
 
